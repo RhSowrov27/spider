@@ -1,0 +1,57 @@
+<?php
+
+require '../../kufa/sessionCheck.php';
+require '../../kufa/dashboard_includes/header.php';
+
+require '../../kufa/db.php';
+?>
+<div class="sl-mainpanel">
+      <nav class="breadcrumb sl-breadcrumb">
+        <a class="breadcrumb-item" href="index.html">Dashboard</a>
+
+      </nav>
+
+      <div class="sl-pagebody">
+        <div class="row">
+            <div class="col-lg-8 m-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Add About Me</h5>
+                    </div>
+                    
+                    <div class="card-body">
+                        <form action="aboutme_post.php" method="POST"  >
+                            
+                            
+                            <div class="form-group">
+                            <label for="">Title</label>
+                            <input type="text" class="form-control" name="title">
+                            </div>
+                            <div class="form-group">
+                            <label for="">Description</label>
+                            <input type="text" class="form-control" name="description">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Add Skill</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+</div>
+
+<?php require '../../kufa/dashboard_includes/footer.php';?>
+
+<?php if(isset($_SESSION ['aboutme'])){ ?>
+    <script>
+        Swal.fire({
+                    icon: 'success',
+                    title: 'Successfuly',
+                    text: '<?=$_SESSION ['aboutme']?>',
+                            
+                  })
+    </script>
+<?php } unset($_SESSION ['aboutme']); ?>
